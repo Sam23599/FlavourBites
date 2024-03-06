@@ -1,7 +1,11 @@
-import { Alert, StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, View, ScrollView, Pressable, TextInput, Image} from 'react-native'
 import React, { useState, useEffect } from 'react'
 import * as Location from "expo-location";
 import * as LocationGeocoding from 'expo-location';
+import { Octicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import Carousel from '../../components/Carousel';
+
 
 const index = () => {
     const [locationServicesEnabled, setLocationServicesEnabled] = useState(false);
@@ -41,7 +45,7 @@ const index = () => {
             accuracy: Location.Accuracy.High
         })
         console.log("Current location: ", location);
-        
+
         let { coords } = await Location.getCurrentPositionAsync();
         if (coords) {
             const { latitude, longitude } = coords;
@@ -65,9 +69,36 @@ const index = () => {
     console.log("my address", displayCurrentAddress);
 
     return (
-        <View>
-            <Text>Home Screen</Text>
-        </View>
+        <ScrollView style={{ flex: 1, backgroundColor: "#f8f8f8" }}>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 12, padding: 10 }}>
+                <Octicons name="location" size={24} color="#E52850" />
+                <View style={{ flex: 1 }}>
+                    <Text style={{ fontSize: 15, fontWeight: 500 }}>Deliver to</Text>
+                    <Text style={{ color: "gray", fontSize: 16, margin: 3 }}>{displayCurrentAddress}</Text>
+                </View>
+                <Pressable style={{ backgroundColor: "#6cB4EE", width: 40, height: 40, borderRadius: 20, justifyContent: "center", alignItems: "center" }}>
+                    <Text>S</Text>
+                </Pressable>
+            </View>
+
+            <View
+                style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    borderWidth: 1,
+                    borderColor: "#C0C0C0",
+                    paddingVertical: 8,
+                    paddingHorizontal: 10,
+                    borderRadius: 11,
+                    marginTop: 10,
+                    marginHorizontal: 10,
+                }}>
+                <TextInput placeholder="Search for food, hotels" />
+                <AntDesign name="search1" size={24} color="#E52B50" />
+            </View>
+            <Carousel/>
+        </ScrollView>
     )
 }
 export default index

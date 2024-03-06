@@ -1,4 +1,4 @@
-setup Android SDK as followed in the article-
+#setup Android SDK as followed in the article-
 
 https://reactnative.dev/docs/environment-setup?guide=native&os=linux#target-os-1
 
@@ -10,3 +10,19 @@ export ANDROID_HOME=/media/sam/media/Android/SDK
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator
  
 
+
+#Install expo router, follow the steps mentioned here-
+https://docs.expo.dev/router/installation/#manual-installation
+
+in app.json, your-app-scheme should be the name of ur project
+ "scheme": "your-app-scheme"
+
+incase some issue with the babel, try this and it should resolve that-
+npm install babel-preset-expo --save-dev
+
+for location-
+npx expo install expo-location
+
+
+#Carousel
+yarn add react-native-image-slider-box
