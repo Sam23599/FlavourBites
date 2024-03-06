@@ -1,0 +1,12 @@
+setup Android SDK as followed in the article-
+
+https://reactnative.dev/docs/environment-setup?guide=native&os=linux#target-os-1
+
+
+setup environment-variables properly, specially in ~/.profile, ~/.bashrc and /etc/environment
+something like this (ur ANDROID_HOME path should exactly be the place where you installed the Android SDK)- 
+
+export ANDROID_HOME=/media/sam/media/Android/SDK
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator
+ 
+
