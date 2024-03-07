@@ -139,6 +139,8 @@ const index = () => {
         },
     ];
 
+
+
     return (
         <ScrollView style={{ flex: 1, backgroundColor: "#f8f8f8" }}>
             <View style={{ flexDirection: "row", alignItems: "center", gap: 12, padding: 10 }}>
@@ -171,7 +173,7 @@ const index = () => {
             <Carousel />
             <Categories />
 
-            <Text style={{ textAlign: "center", marginTop: 6, letterSpacing: 4, marginBottom: 5, marginTop: 3, color: "grey" }}>Recommended</Text>
+            <Text style={{ textAlign: "center", marginTop: 6, letterSpacing: 4, marginBottom: 5, color: "grey" }}>Latest Arrivals</Text>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {recommended?.map((item, index) => (
@@ -190,7 +192,22 @@ const index = () => {
                     </View>
                 ))}
             </ScrollView>
-            <Text style={{ textAlign: "center", marginTop: 6, letterSpacing: 4, marginBottom: 5, color: "grey" }}> Explore</Text>
+            <Text style={{ textAlign: "center", marginTop: 6, letterSpacing: 4, marginBottom: 5, color: "grey" }}>Popular Deals</Text>
+
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {items?.map((item, index) => (
+                    <View key={index} style={{
+                        width: 90, borderColor: "#E0E0E0", borderWidth: 1, paddingVertical: 5, paddingHorizontal: 1, borderRadius: 5, marginLeft: 10, marginVertical: 10,
+                        alignItems: "center", justifyContent: "center", backgroundColor: "white"
+                    }}>
+                        <Image style={{ width: 50, height: 50 }} source={{ uri: item?.image }} />
+                        <Text style={{ fontSize: 13, fontWeight: "500", marginTop: 6 }}>{item?.name}</Text>
+                        <Text style={{ fontSize: 12, color: "grey", marginTop: 3 }}>{item?.description}</Text>
+                    </View>
+                ))}
+            </ScrollView>
+            <Text style={{ textAlign: "center", marginTop: 7, marginBottom: 5, color: "grey" }} >Recommended Restraurant</Text>
+
         </ScrollView>
     )
 }
