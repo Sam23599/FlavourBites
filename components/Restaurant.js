@@ -22,7 +22,7 @@ const Restaurant = ({ item }) => {
             style={{
                 marginHorizontal: 6, marginVertical: 12, borderRadius: 20, backgroundColor: "white"
             }}>
-
+                
             <Image style={{ width: "100%", aspectRatio: 6 / 4, borderTopLeftRadius: 6, borderTopRightRadius: 6 }} source={{ uri: item?.featured_image }} />
             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                 <View style={{}}>
