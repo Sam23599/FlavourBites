@@ -37,7 +37,8 @@ const restaurant = () => {
           rating: 4.3,
           ratings: 34,
           image:
-            "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/ry3c3f518z10t4olu4l7",
+            "https://imgs.search.brave.com/RWuT7GvRCesCPHpp7KXk-ClaG4mFOEK21hMjbeQn_fc/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/c2tpbm55dGFzdGUu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDEwLzEyL0NoaWNr/ZW4tVGhpZ2hzLXdp/dGgtU2hhbGxvdHMt/aW4tUmVkLVdpbmUt/VmluZWdhci01LTU1/MHg4MjUuanBn",
+          // "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/ry3c3f518z10t4olu4l7",
           veg: false,
           bestSeller: true,
           quantity: 1,
@@ -172,8 +173,8 @@ const restaurant = () => {
         </View>
       </View>
 
-      {menu?.map((item, index)=>(
-        <FoodItem key={index} item={item}/>
+      {menu?.map((item, index) => (
+        <FoodItem key={index} item={item} />
       ))}
     </ScrollView>
   )
