@@ -10,6 +10,5 @@ export default function layout() {
                 <Stack.Screen name="restaurant" />
             </Stack>
         </Provider>
-
     )
 }
