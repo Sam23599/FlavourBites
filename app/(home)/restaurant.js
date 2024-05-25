@@ -150,15 +150,15 @@ const restaurant = () => {
 
   const scrollViewRef = useRef(null);
   const scrollAnimation = useRef(new Animated.Value(0)).current;
-  const item_height = 650;
+  const top_height = 650;
   const scrollToCategory = (index) => {
-    const yOffSet = index * item_height;
+    const yOffSet = index * top_height;
     Animated.timing(scrollAnimation, {
       toValue: yOffSet,
       duration: 500,
       useNativeDriver: true,
     }).start();
-    scrollViewRef.current.scrollTo({ y: yOffSet, animated: true })
+    scrollViewRef.current.scrollTo({ y: yOffSet, animated: true });
   };
 
   return (
@@ -204,6 +204,13 @@ const restaurant = () => {
           </Pressable>
         ))}
       </View>
+
+      <Pressable style={{ width: 60, height: 60, borderRadius: 30, justifyContent: "center", alignItems: "center", position: "absolute", right: 25, bottom: cart?.length > 0 ? 70 : 35, backgroundColor: "black", }}>
+        <Ionicons style={{ textAlign: "center" }} name="fast-food-outline" size={24} color="white" />
+        <Text style={{ textAlign: "center", color: "white", fontWeight: "500", fontSize: 11, marginTop: 3, }}>
+          MENU
+        </Text>
+      </Pressable>
 
       {cart?.length > 0 && (
         <Pressable style={{ backgroundColor: "#fd5c63", paddingHorizontal: 10, paddingVertical: 10, justifyContent: "center", alignItems: "center" }} >
