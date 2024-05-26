@@ -1,9 +1,11 @@
 import { Pressable, ScrollView, StyleSheet, Text, View, Image, Animated } from 'react-native'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons, SimpleLineIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import FoodItem from '../../components/FoodItem';
 import { useSelector } from 'react-redux';
+// import ReactNativeModal from 'react-native-modal';
+import Modal from "react-native-modal";
 
 const restaurant = () => {
   const params = useLocalSearchParams();
@@ -161,6 +163,8 @@ const restaurant = () => {
     scrollViewRef.current.scrollTo({ y: yOffSet, animated: true });
   };
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <>
       <ScrollView ref={scrollViewRef} style={{ backgroundColor: "white" }}>
@@ -205,12 +209,37 @@ const restaurant = () => {
         ))}
       </View>
 
-      <Pressable style={{ width: 60, height: 60, borderRadius: 30, justifyContent: "center", alignItems: "center", position: "absolute", right: 25, bottom: cart?.length > 0 ? 70 : 35, backgroundColor: "black", }}>
+      <Pressable
+        onPress={() => setModalVisible(!modalVisible)}
+        style={{ width: 60, height: 60, borderRadius: 30, justifyContent: "center", alignItems: "center", position: "absolute", right: 25, bottom: cart?.length > 0 ? 70 : 35, backgroundColor: "black", }}>
         <Ionicons style={{ textAlign: "center" }} name="fast-food-outline" size={24} color="white" />
         <Text style={{ textAlign: "center", color: "white", fontWeight: "500", fontSize: 11, marginTop: 3, }}>
           MENU
         </Text>
-      </Pressable>
+      </Pressable >
+
+      <Modal isVisible={modalVisible} onBackdropPress={() => setModalVisible(!modalVisible)}>
+        <View style={{ backgroundColor: "black", position: "absolute", height: 190, width: 250, bottom: 35, right: 10, borderRadius: 7 }}>
+          {menu?.map((item, index) => (
+            <View style={{ padding: 10, flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+              <Text style={{ color: "white", fontWeight: "600", fontSize: 18 }}>
+                {item?.name}
+              </Text>
+              <Text style={{ color: "#D0D0D0", fontWeight: "600", fontSize: 18 }}>
+                {item?.items?.length}
+              </Text>
+            </View>
+          ))}
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <Image
+              style={{ width: 120, height: 70, resizeMode: "contain" }}
+              source={{
+                uri: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_284/Logo_f5xzza",
+              }}
+            />
+          </View>
+        </View>
+      </Modal>
 
       {cart?.length > 0 && (
         <Pressable style={{ backgroundColor: "#fd5c63", paddingHorizontal: 10, paddingVertical: 10, justifyContent: "center", alignItems: "center" }} >
@@ -221,7 +250,8 @@ const restaurant = () => {
             Add items worth 400 to reduce surge fee by Rs 50.
           </Text>
         </Pressable>
-      )}
+      )
+      }
 
 
     </>
